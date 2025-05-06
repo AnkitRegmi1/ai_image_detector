@@ -2,7 +2,7 @@
 
 // WARNING: Hardcoding API keys is a security risk if the extension is distributed.
 // For personal testing only. Replace "YOUR_OPENAI_API_KEY_HERE" with your actual key.
-
+const HARDCODED_OPENAI_KEY = '';
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     // Handle messages from content scripts
