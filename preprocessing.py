@@ -1,4 +1,3 @@
-# preprocessing.py
 # -----------------------------------------------------------
 # Converts any image file to a 1 × 3 × 224 × 224 tensor
 # using Resize(256) + CenterCrop(224) + ToTensor + Normalize.

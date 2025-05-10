@@ -1,8 +1,7 @@
 """
 convert_to_onnx.py
 ------------------
-Exports the PyTorch EfficientNet‑B0 (2‑class) weights that live **in the same
-folder as this script** to an ONNX file under  browser_extension/onnx_model.onnx.
+Exports the PyTorch EfficientNet‑B0 (2‑class) weights that live 
 
 Run from project root:
     python model/convert_to_onnx.py
@@ -16,7 +15,7 @@ IMG_SIZE = 224
 dummy = torch.randn(1, 3, IMG_SIZE, IMG_SIZE)
 
 # -----------------------------------------------------------
-# NEW: always load the weights that sit right next to THIS file
+# always load the weights that sit right next to THIS file
 # -----------------------------------------------------------
 WEIGHTS = Path(__file__).with_name("8best_model.pth")    # <— added line
 
@@ -38,4 +37,4 @@ torch.onnx.export(
     opset_version=17,
 )
 
-print("✅  ONNX exported ➜", out)
+print(" ONNX exported ➜", out)

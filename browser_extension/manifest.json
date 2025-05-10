@@ -2,9 +2,16 @@
   "manifest_version": 3,
   "name": "AI Image Detector",
   "version": "1.2",
-  "description": "Hover over any image to check if it's AI. If AI, Gemini gives a reason.",
+  "description": "Hover over any image to check if it's AI.",
   "permissions": ["activeTab", "storage"],
-  "host_permissions": ["<all_urls>", "https://generativelanguage.googleapis.com/*"],
+  "host_permissions": [
+    "<all_urls>",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.openai.com/*"  
+  ],
+  "background": {                
+    "service_worker": "background.js"
+  },
   "content_security_policy": {
     "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
   },

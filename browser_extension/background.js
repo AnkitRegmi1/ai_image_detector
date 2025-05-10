@@ -1,8 +1,5 @@
-// background.js
 
-// WARNING: Hardcoding API keys is a security risk if the extension is distributed.
-// For personal testing only. Replace "YOUR_OPENAI_API_KEY_HERE" with your actual key.
-
+const HARDCODED_OPENAI_KEY = " "; // Replace with your key
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     // Handle messages from content scripts
@@ -17,7 +14,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
                     console.error('[AI-Detector Background] FETCH_IMAGE HTTP error:', errorDetail);
                     // Attempt to read response body for more details if available and not too large
                     return resp.text().then(text => {
-                        const fullError = `${errorDetail}. Body: ${text.substring(0, 500)}...`; // Limit body output
+                        const fullError = `${errorDetail}. Body: ${text.substring(0, 500)}...`; 
                         throw new Error(fullError);
                     }).catch(() => {
                          // If reading body fails, just throw the original error
@@ -31,7 +28,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             .then(blob => new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onloadend = () => {
-                    // FileReader result is the data URL (e.g., data:image/png;base64,...)
+                    // FileReader result is the data URL 
                     console.log('[AI-Detector Background] FETCH_IMAGE success for:', msg.url, 'MIME:', blob.type, 'Size:', blob.size);
                     resolve({ ok: true, dataURL: reader.result });
                 };
@@ -153,10 +150,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         return true;
     }
 
-    // Optional: Handle unknown message types if necessary
-    // console.log('[AI-Detector Background] Received unknown message type:', msg.type);
-    // sendResponse({ ok: false, error: 'Unknown message type received by background script.' });
-    // return false; // if sendResponse is called synchronously for unknown types
+   
 });
 
 // Log to confirm the script itself loaded without immediate syntax errors

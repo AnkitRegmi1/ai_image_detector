@@ -7,7 +7,7 @@ import torch.optim as optim
 
 # ───────── config ─────────
 ROOT       = Path(__file__).parents[1]          # project root
-VAL_DIR    = ROOT / "VAL"                       # your mixed human/ai folder
+VAL_DIR    = ROOT / "VAL"                      
 CKPT_IN    = ROOT / "model" / "8best_model.pth" # original good weights
 CKPT_OUT   = ROOT / "model" / "fine_tuned_model.pth"
 EPOCHS     = 4          # full‑frame touch‑up – keep small
@@ -46,4 +46,4 @@ for ep in range(1, EPOCHS+1):
     print(f"Epoch {ep}/{EPOCHS}  loss {loss_sum/total:.4f}  acc {acc:.2f}%")
 
 torch.save(net.state_dict(), CKPT_OUT)
-print(f"✅  Fine‑tuned weights saved → {CKPT_OUT}")
+print(f"Fine‑tuned weights saved → {CKPT_OUT}")
